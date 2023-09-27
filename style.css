@@ -1,46 +1,160 @@
 body {
   margin: 0;
+  padding: 0;
   height: 100vh;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 700;
-  color: #0c0a09;
+  color: #2a2d41;
 }
 
+/*
+baby powder ("white"): #fdfffc
+space cadet ("black"): #2c2a4a
+jonquil (accent): #f7cb15
+cordovan: #984447
+*/
+
 :root {
-  font-size: 32px;
+  font-size: 16px;
 }
 
 a:link {
   text-decoration: none;
 }
 
+/* a:focus,
+a:hover {
+  color: #2C2A4A;
+} */
+
+input,
+button {
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
 .container {
   display: grid;
   resize: both;
   overflow: auto;
-  gap: 4px;
-  padding: 4px;
-  border: 1px solid grey;
   grid-template-columns: 1fr 4fr;
   grid-template-rows: 1fr 5fr;
 }
 
 .sidebar {
   grid-row: 1 / 6;
-  background-color: #b45309;
-  color: #fffbeb;
+  background-color: #984447;
+  color: #fdfffc;
+  padding: 32px;
+}
+
+.sidebar > .logo {
+  font-size: 2rem;
+}
+
+.head-bar {
+  display: grid;
+  gap: 4px;
+  padding: 32px;
+  box-shadow: 24px 12px 5px #64748b; /*slate from Tailwind*/
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    "search-container search-container search-container notification-container"
+    "greeting-container . . buttons"
+}
+
+.search-container {
+  grid-area: search-container;
+}
+
+#search {
+  border: none;
+  border-radius: 14px;
+  font-size: 1.5rem;
+  background: #e2e8f0;
+  padding: 4px 12px;
+}
+
+.notification-container {
+  grid-area: notification-container;
+  font-size: 1.5rem;
+}
+
+.greeting-container {
+  grid-area: greeting-container;
+  font-size: 2rem;
+}
+
+.buttons {
+  grid-area: buttons;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buttons button {
+  border-radius: 28px;
+  border: none;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 14px 36px;
+  background-color: #984447;
+  color: #fdfffc;
+}
+
+button:hover,
+button:focus {
+  background-color: #2c2a4a;
+  color: #fdfffc;
+  outline: none;
 }
 
 .main-content {
   grid-column: 2 / 7;
-  background-color: #f4f4f5;
+  background-color: #e2e8f0;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 16px;
+  padding: 32px;
+}
+
+.projects-container {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 16px;
+}
+
+.cards > .card {
+  background-color: #fdfffc;
+  box-shadow: 5px 5px 5px #94a3b8;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.preview {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.news-container {
+  grid-row: 2 / 3;
+  grid-column: 2 / 3;
 }
 
 .main-content .title {
-  font-size: .7rem;
+  font-size: 1.5rem;
+  margin-bottom: 12px;
 }
 
 ul {
   list-style-type: none;
-  font-size: .7rem;
+  font-size: 1.5rem;
 }
