@@ -37,6 +37,7 @@ button {
   display: grid;
   resize: both;
   overflow: auto;
+  height: 100vh;
   grid-template-columns: 1fr 4fr;
   grid-template-rows: 1fr 5fr;
 }
@@ -52,20 +53,37 @@ button {
   font-size: 2rem;
 }
 
+ul {
+  list-style-type: none;
+  font-size: 1.5rem;
+}
+
+.sidebar li {
+  padding: 8px 0;
+}
+
 .head-bar {
   display: grid;
-  gap: 4px;
-  padding: 32px;
-  box-shadow: 24px 12px 5px #64748b; /*slate from Tailwind*/
+  gap: 16px;
+  padding: 32px 56px;
+  box-shadow: 24px 12px 5px #64748b; /*slate from Tailwind, not currently working*/
   grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(7, 1fr);
   grid-template-areas:
-    "search-container search-container search-container notification-container"
-    "greeting-container . . buttons"
+    "search-container search-container search-container search-container . . notification-container"
+    "greeting-container greeting-container . . . buttons buttons"
 }
 
 .search-container {
   grid-area: search-container;
+  display: flex;
+  align-items: center;
+}
+
+.search-container > img {
+  max-width: 1.75rem;
+  margin-right: 16px;
+  fill: #2a2d41;
 }
 
 #search {
@@ -73,16 +91,32 @@ button {
   border-radius: 14px;
   font-size: 1.5rem;
   background: #e2e8f0;
-  padding: 4px 12px;
+  display: inline-block;
+  width: 700px;
 }
 
 .notification-container {
   grid-area: notification-container;
   font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.notification-container > img {
+  max-width: 1.75rem;
+  margin-right: 16px;
+  fill: #2a2d41;
 }
 
 .greeting-container {
   grid-area: greeting-container;
+}
+
+.greeting-container > .text {
+  font-size: 1rem;
+}
+
+.greeting-container > .name {
   font-size: 2rem;
 }
 
@@ -116,8 +150,13 @@ button:focus {
   display: grid;
   grid-template-columns: 3fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 16px;
+  gap: 32px;
   padding: 32px;
+}
+
+.main-content .title {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
 }
 
 .projects-container {
@@ -129,14 +168,14 @@ button:focus {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  gap: 16px;
+  gap: 32px;
 }
 
 .cards > .card {
   background-color: #fdfffc;
   box-shadow: 5px 5px 5px #94a3b8;
   border-radius: 8px;
-  padding: 16px;
+  padding: 32px;
 }
 
 .preview {
@@ -144,17 +183,63 @@ button:focus {
   font-weight: 500;
 }
 
-.news-container {
+.icons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 32px;
+}
+
+.icons > img {
+  fill: #2a2d41;
+  padding-left: 32px;
+  max-width: 2rem;
+}
+
+.announcement-list,
+.trending-users {
+  background-color: #fdfffc;
+  box-shadow: 5px 5px 5px #94a3b8;
+  border-radius: 8px;
+  padding: 36px;
+}
+
+.maintenance,
+.share-day {
+  padding-bottom: 16px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.share-day,
+.privacy {
+  padding-top: 16px;
+}
+
+.announcements .subtitle {
+  font-size: 1.25rem;
+}
+
+.announcements .text {
+  font-weight: 500;
+}
+
+.trending {
   grid-row: 2 / 3;
   grid-column: 2 / 3;
 }
 
-.main-content .title {
-  font-size: 1.5rem;
-  margin-bottom: 12px;
+.trending-users {
+  font-size: 1.25rem;
+  font-weight: 500;
 }
 
-ul {
-  list-style-type: none;
-  font-size: 1.5rem;
+.user {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
+  padding-bottom: 16px;
+}
+
+.project {
+  grid-column: 2 / 3;
 }
