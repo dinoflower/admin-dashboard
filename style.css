@@ -22,10 +22,10 @@ a:link {
   text-decoration: none;
 }
 
-/* a:focus,
+a:focus,
 a:hover {
   color: #2C2A4A;
-} */
+}
 
 input,
 button {
@@ -36,10 +36,16 @@ button {
 .container {
   display: grid;
   resize: both;
-  overflow: auto;
+  overflow: hidden;
   height: 100vh;
   grid-template-columns: 1fr 4fr;
   grid-template-rows: 1fr 5fr;
+}
+
+.title,
+.subtitle,
+.handle {
+  color: #000000;
 }
 
 .sidebar {
@@ -62,16 +68,22 @@ ul {
   padding: 8px 0;
 }
 
+.sidebar svg {
+  fill: #fdfffc;
+  max-width: 1.5rem;
+  margin-right: 16px;
+}
+
 .head-bar {
-  display: grid;
-  gap: 16px;
   padding: 32px 56px;
   box-shadow: 24px 12px 5px #64748b; /*slate from Tailwind, not currently working*/
+  display: grid;
+  gap: 16px;
   grid-template-rows: 1fr 1fr;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   grid-template-areas:
-    "search-container search-container search-container search-container . . notification-container"
-    "greeting-container greeting-container . . . buttons buttons"
+    "search-container search-container search-container search-container . notification-container"
+    "greeting-container greeting-container . . buttons buttons"
 }
 
 .search-container {
@@ -80,7 +92,7 @@ ul {
   align-items: center;
 }
 
-.search-container > img {
+.search-container > svg {
   max-width: 1.75rem;
   margin-right: 16px;
   fill: #2a2d41;
@@ -92,7 +104,7 @@ ul {
   font-size: 1.5rem;
   background: #e2e8f0;
   display: inline-block;
-  width: 700px;
+  width: 900px;
 }
 
 .notification-container {
@@ -102,14 +114,29 @@ ul {
   align-items: center;
 }
 
-.notification-container > img {
+.notification-container > svg {
   max-width: 1.75rem;
   margin-right: 16px;
   fill: #2a2d41;
 }
 
+.notification-container > img {
+  max-width: 2.5rem;
+  border-radius: 50%;
+  margin-right: 16px;
+}
+
 .greeting-container {
   grid-area: greeting-container;
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+  grid-template-columns: 1fr 3fr;
+}
+
+.greeting-container > img {
+  max-width: 5rem;
+  border-radius: 50%;
+  grid-row: 1 / 3;
 }
 
 .greeting-container > .text {
@@ -132,7 +159,7 @@ ul {
   border: none;
   font-weight: 700;
   font-size: 1rem;
-  padding: 14px 36px;
+  padding: 14px 48px;
   background-color: #984447;
   color: #fdfffc;
 }
@@ -174,8 +201,12 @@ button:focus {
 .cards > .card {
   background-color: #fdfffc;
   box-shadow: 5px 5px 5px #94a3b8;
+  border-left: 12px solid #f7cb15;
   border-radius: 8px;
   padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .preview {
@@ -190,7 +221,7 @@ button:focus {
   padding-top: 32px;
 }
 
-.icons > img {
+.icons > svg {
   fill: #2a2d41;
   padding-left: 32px;
   max-width: 2rem;
@@ -238,6 +269,16 @@ button:focus {
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 2fr;
   padding-bottom: 16px;
+}
+
+#horace {
+  padding: 0;
+}
+
+.user > img {
+  max-width: 4.5rem;
+  border-radius: 50%;
+  grid-row: 1 / 3;
 }
 
 .project {
